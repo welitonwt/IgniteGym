@@ -31,8 +31,8 @@ export function Profile() {
           </TouchableOpacity>
 
           <Center w="full">
-            <Input placeholder="Weliton Duarte" bg="gray.600" mb={4} />
-            <Input value="welitonww@hotmail.com" bg="gray.600" isReadOnly />
+            <Input placeholder="Nome" bg="gray.600" mb={4} />
+            <Input value="Email" bg="gray.600" isReadOnly />
           </Center>
 
           <Heading color="green.500" fontSize="lg" mt={4} mb={2}>
