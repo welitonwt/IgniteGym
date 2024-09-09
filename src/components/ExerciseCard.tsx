@@ -18,7 +18,7 @@ export function ExerciseCard({ ...res }: Props) {
       >
         <Image
           source={{
-            uri: 'https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/costas-remada-unilateral-com-halter-serrote-no-banco.gif',
+            uri: 'https://png.pngtree.com/background/20211215/original/pngtree-take-dumbbells-with-both-hands-in-the-equipment-area-of-the-picture-image_1483648.jpg',
           }}
           alt="Imagem do exercicio"
           mr={4}
