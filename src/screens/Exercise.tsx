@@ -1,9 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
 import { AppNavigatorRoutesProp } from '@routes/app.routes'
 import { ArrowLeft } from 'lucide-react-native'
-import { VStack, Icon, HStack, Heading, Text, Image } from 'native-base'
-import { TouchableOpacity } from 'react-native'
+import { VStack, Icon, HStack, Heading, Text, Image, Box } from 'native-base'
+import { ScrollView, TouchableOpacity } from 'react-native'
 import BodySvg from '@assets/body.svg'
+import SeriesSvg from '@assets/series.svg'
+import RepetitionSvg from '@assets/repetitions.svg'
+import { Button } from '@components/Button'
 
 export function Exercise() {
   const navigation = useNavigation<AppNavigatorRoutesProp>()
@@ -51,18 +54,43 @@ export function Exercise() {
         </HStack>
       </VStack>
 
-      <VStack>
-        <Image
-          source={{
-            uri: 'https://treinomestre.com.br/wp-content/uploads/2018/10/pulley-frente-puxador.jpg',
-          }}
-          alt="exercicio"
-          mb={3}
-          w="full"
-          h={80}
-          rounded="lg"
-        />
-      </VStack>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 70 }}
+      >
+        <VStack p="4">
+          <Image
+            source={{
+              uri: 'https://treinomestre.com.br/wp-content/uploads/2018/10/pulley-frente-puxador.jpg',
+            }}
+            alt="exercicio"
+            mb={3}
+            w="full"
+            h={80}
+            rounded="lg"
+          />
+
+          <Box bg="gray.600" rounded="md" pb="4" px="4">
+            <HStack
+              alignItems="center"
+              justifyContent="space-around"
+              mb="5"
+              mt="5"
+            >
+              <HStack>
+                <SeriesSvg />
+                <Text color="gray.100"> 3 Séries</Text>
+              </HStack>
+              <HStack>
+                <RepetitionSvg />
+                <Text color="gray.100"> 12 Repetições</Text>
+              </HStack>
+            </HStack>
+
+            <Button title="Marcar como realizado" />
+          </Box>
+        </VStack>
+      </ScrollView>
     </VStack>
   )
 }
