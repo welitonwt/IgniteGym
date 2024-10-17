@@ -1,11 +1,32 @@
+import { TouchableOpacity } from 'react-native'
+import { Center, Heading, ScrollView, VStack } from 'native-base'
+import * as ImagePicker from 'expo-image-picker'
+
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { ScreenHeader } from '@components/ScreenHeader'
 import { UserPhoto } from '@components/UserPhoto'
-import { Center, Heading, ScrollView, VStack } from 'native-base'
-import { TouchableOpacity } from 'react-native'
+import { useState } from 'react'
 
 export function Profile() {
+  const [userPhoto, setUserPhoto] = useState(
+    'https://voxnews.com.br/wp-content/uploads/2017/04/unnamed.png',
+  )
+
+  async function handleUserPhotoSelect() {
+    const photoSelected = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      quality: 1,
+      aspect: [4, 4],
+      allowsEditing: true,
+    })
+
+    if (photoSelected.canceled) {
+      return
+    }
+
+    setUserPhoto(photoSelected.assets[0].uri)
+  }
   return (
     <VStack flex={1}>
       <ScreenHeader title="Perfil" />
@@ -13,12 +34,12 @@ export function Profile() {
         <Center mt={6} px={10}>
           <UserPhoto
             source={{
-              uri: 'https://github.com/welitonwt.png',
+              uri: userPhoto,
             }}
             size={32}
             alt="Imagem do Perfil"
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleUserPhotoSelect}>
             <Heading
               color="green.500"
               fontFamily="heading"
